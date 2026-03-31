@@ -467,6 +467,56 @@
             outline: none;
             border-color: var(--primary-red);
         }
+
+
+        @media (max-width: 768px) {
+            /* Gradientes más claros */
+            .hero {
+                background: linear-gradient(135deg, #c41e3a 0%, #e63946 100%) !important;
+            }
+            
+            .testimonials {
+                background: linear-gradient(135deg, #c41e3a 0%, #d6304a 100%) !important;
+            }
+            
+            /* Mejorar sombras de texto */
+            .hero-content h1 {
+                text-shadow: 2px 2px 8px rgba(0,0,0,0.6) !important;
+            }
+            
+            .hero-content .subtitle,
+            .hero-content .description {
+                text-shadow: 1px 1px 4px rgba(0,0,0,0.5) !important;
+            }
+            
+            /* Mejorar tarjetas de testimonios */
+            .testimonial-card {
+                background: rgba(255,255,255,0.15) !important;
+                border: 1px solid rgba(255,255,255,0.35) !important;
+            }
+            
+            /* Aumentar padding para mejor respiración */
+            .hero,
+            .benefits,
+            .ingredients,
+            .how-it-works,
+            .testimonials,
+            .cta-section {
+                padding: 3rem 1.2rem !important;
+            }
+            
+            /* Ajustar tamaño de títulos */
+            .section-title {
+                font-size: 2rem !important;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.2rem !important;
+            }
+        }
+
+
+        
     </style>
 </head>
 <body>
