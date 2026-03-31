@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CIRCLEN - Mejora tu Circulación | Salud Cardiovascular</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-red: #c41e3a;
+            --dark-red: #8b0000;
+            --light-red: #ff6b6b;
+            --white: #ffffff;
+            --gray: #f5f5f5;
+            --dark: #1a1a1a;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--dark-red) 0%, var(--primary-red) 100%);
+            color: var(--white);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 70px;
+            background: linear-gradient(135deg, var(--dark-red) 0%, var(--primary-red) 50%, #8b0000 100%);
+            color: var(--white);
+            padding: 4rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></svg>');
+            background-size: 100px 100px;
+            opacity: 0.3;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-content .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            animation: fadeInUp 1s ease 0.2s backwards;
+        }
+
+        .hero-content .description {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+            animation: fadeInUp 1s ease 0.4s backwards;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--white);
+            color: var(--primary-red);
+            padding: 1rem 3rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            animation: fadeInUp 1s ease 0.6s backwards, pulse 2s infinite;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+        }
+
+        .hero-image {
+            text-align: center;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            filter: drop-shadow(0 10px 30px rgba(0,0,0,0.5));
+        }
+
+        .heart-icon {
+            font-size: 8rem;
+            opacity: 0.3;
+            position: absolute;
+            right: 5%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        /* Benefits Section */
+        .benefits {
+            padding: 5rem 2rem;
+            background: var(--gray);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--dark-red);
+            margin-bottom: 3rem;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .benefit-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .benefit-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .benefit-card h3 {
+            color: var(--primary-red);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        /* Ingredients Section */
+        .ingredients {
+            padding: 5rem 2rem;
+            background: var(--white);
+        }
+
+        .ingredients-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .ingredient-card {
+            background: linear-gradient(135deg, var(--primary-red) 0%, var(--dark-red) 100%);
+            color: var(--white);
+            padding: 2.5rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .ingredient-card h3 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .ingredient-card .dose {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+
+        /* How it Works */
+        .how-it-works {
+            padding: 5rem 2rem;
+            background: var(--gray);
+        }
+
+        .steps {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .step {
+            flex: 1;
+            min-width: 250px;
+            max-width: 350px;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-red);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 1.5rem;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, var(--dark-red) 0%, var(--primary-red) 100%);
+            color: var(--white);
+        }
+
+        .testimonials .section-title {
+            color: var(--white);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .testimonial-card .stars {
+            color: #ffd700;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 5rem 2rem;
+            background: var(--white);
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            color: var(--dark-red);
+            margin-bottom: 1rem;
+        }
+
+        .price {
+            font-size: 3rem;
+            color: var(--primary-red);
+            font-weight: bold;
+            margin: 2rem 0;
+        }
+
+        .price span {
+            font-size: 1rem;
+            color: var(--dark);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: var(--white);
+            padding: 3rem 2rem 1rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .disclaimer {
+            background: rgba(255,255,255,0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .heart-icon {
+                display: none;
+            }
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 15px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--dark);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--dark-red);
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary-red);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">CIRCLEN</div>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#beneficios">Beneficios</a></li>
+                <li><a href="#ingredientes">Ingredientes</a></li>
+                <li><a href="#testimonios">Testimonios</a></li>
+                <li><a href="#comprar">Comprar</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="heart-icon">❤️</div>
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Mejora tu circulación</h1>
+                <p class="subtitle">Al tiempo que previenes enfermedades cardiovasculares y reduces la presión arterial</p>
+                <p class="description">
+                    CIRCLEN es un suplemento natural con Cúrcuma, Ajo y Romero (3000 mg cada uno) 
+                    diseñado para optimizar tu salud cardiovascular y mejorar tu calidad de vida.
+                </p>
+                <button class="cta-button" onclick="openModal()">¡COMPRAR AHORA!</button>
+            </div>
+            <div class="hero-image">
+                <div style="background: white; padding: 2rem; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.3);">
+                    <div style="font-size: 8rem;">
+                        <img src="https://viajalo.net/image/producto2.png" alt="Corazón anatómico" style="max-width: 8rem; height: auto; display: block; margin: 0 auto;">
+                    </div>
+                    <div style="background: linear-gradient(135deg, #8b0000 0%, #c41e3a 100%); color: white; padding: 1rem; border-radius: 10px; margin-top: 1rem;">
+                        <div style="font-size: 1.5rem; font-weight: bold;">CIRCLEN</div>
+                        <div style="font-size: 0.9rem;">3000 mg</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits" id="beneficios">
+        <div class="container">
+            <h2 class="section-title">Beneficios de CIRCLEN</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">💓</div>
+                    <h3>Mejora la Circulación</h3>
+                    <p>Optimiza el flujo sanguíneo en todo tu cuerpo, mejorando la oxigenación de tus tejidos y órganos.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">📉</div>
+                    <h3>Reduce la Presión Arterial</h3>
+                    <p>Ayuda a mantener niveles saludables de presión arterial de forma natural.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🛡️</div>
+                    <h3>Previene Enfermedades</h3>
+                    <p>Protege tu sistema cardiovascular contra enfermedades y complicaciones futuras.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">⚡</div>
+                    <h3>Más Energía</h3>
+                    <p>Mejora tu vitalidad y energía diaria al optimizar la circulación sanguínea.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon"></div>
+                    <h3>Salud Cerebral</h3>
+                    <p>Mejora la circulación cerebral, potenciando tu concentración y memoria.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🌿</div>
+                    <h3>100% Natural</h3>
+                    <p>Fórmula natural con ingredientes seleccionados y endulzado con Stevia.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ingredients Section -->
+    <section class="ingredients" id="ingredientes">
+        <div class="container">
+            <h2 class="section-title">Ingredientes Activos</h2>
+            <div class="ingredients-grid">
+                <div class="ingredient-card">
+                    <h3>Cúrcuma</h3>
+                    <div class="dose">3000 mg</div>
+                    <p>Poderoso antiinflamatorio natural que mejora la salud cardiovascular y reduce el estrés oxidativo.</p>
+                </div>
+                <div class="ingredient-card">
+                    <h3>Ajo</h3>
+                    <div class="dose">3000 mg</div>
+                    <p>Reduce la presión arterial, mejora la circulación y disminuye los niveles de colesterol.</p>
+                </div>
+                <div class="ingredient-card">
+                    <h3>Romero</h3>
+                    <div class="dose">3000 mg</div>
+                    <p>Estimula la circulación sanguínea y protege contra el daño celular con sus antioxidantes.</p>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: var(--gray); border-radius: 15px;">
+                <h3 style="color: var(--dark-red); margin-bottom: 1rem;">Información del Producto</h3>
+                <p><strong>Peso Neto:</strong> 18 g (30 Unidades)</p>
+                <p><strong>Porciones por envase:</strong> 10</p>
+                <p><strong>Sabor:</strong> Original con Stevia</p>
+                <p><strong>Registro:</strong> MINSALUD</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How it Works -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">¿Cómo Funciona?</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Toma Diaria</h3>
+                    <p>Consume 3 unidades diarias con agua, preferiblemente con las comidas principales.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Absorción</h3>
+                    <p>Los ingredientes activos se absorben rápidamente en tu sistema digestivo.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Resultados</h3>
+                    <p>En pocas semanas notarás mejora en tu circulación y niveles de energía.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials" id="testimonios">
+        <div class="container">
+            <h2 class="section-title">Lo Que Dicen Nuestros Clientes</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p>"Después de 3 semanas tomando CIRCLEN, mi presión arterial mejoró notablemente. Me siento con más energía y mi médico está muy satisfecho."</p>
+                    <p style="margin-top: 1rem; font-weight: bold;">- María González</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p>"Excelente producto. Ya no siento tanto cansancio en las piernas y mi circulación mejoró muchísimo. Totalmente recomendado."</p>
+                    <p style="margin-top: 1rem; font-weight: bold;">- Carlos Rodríguez</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p>"Me encanta que sea natural y con Stevia. Lo llevo tomando 2 meses y los resultados son increíbles. Mi calidad de vida mejoró."</p>
+                    <p style="margin-top: 1rem; font-weight: bold;">- Ana María López</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="comprar">
+        <div class="container">
+            <h2>¡Comienza a Cuidar tu Salud Hoy!</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 1rem;">No esperes más para mejorar tu circulación y prevenir enfermedades cardiovasculares</p>
+            <div class="price">
+                $89.900 COP
+                <span>/ envase de 30 unidades</span>
+            </div>
+            <button class="cta-button" onclick="openModal()" style="font-size: 1.5rem; padding: 1.5rem 4rem;">
+                ORDENAR AHORA
+            </button>
+            <p style="margin-top: 2rem; color: #666;">
+                ✅ Envío gratis a todo el país<br>
+                ✅ Pago contra entrega disponible<br>
+                ✅ Garantía de satisfacción
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <h3 style="margin-bottom: 1rem;">CIRCLEN</h3>
+            <p>Tu aliado para una mejor circulación y salud cardiovascular</p>
+            
+            <div class="disclaimer">
+                <strong>Nota importante:</strong> Este producto es un suplemento alimenticio. 
+                Los resultados pueden variar de persona a persona. No reemplaza la consulta médica. 
+                Si tiene alguna condición médica, consulte a su médico antes de consumir. 
+                Registro MINSALUD. Contiene edulcorantes.
+            </div>
+            
+            <p style="margin-top: 2rem; opacity: 0.8;">
+                © 2024 CIRCLEN. Todos los derechos reservados.<br>
+                Contacto: info@circlen.com | Tel: (601) 123-4567
+            </p>
+        </div>
+    </footer>
+
+    <!-- Order Modal -->
+    <div id="orderModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <h2 style="color: var(--dark-red); margin-bottom: 1rem;">Realizar Pedido</h2>
+            <p style="margin-bottom: 2rem;">Completa el formulario y nos pondremos en contacto contigo</p>
+            
+            <form id="orderForm" onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label for="name">Nombre completo *</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Teléfono / Celular *</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Correo electrónico</label>
+                    <input type="email" id="email" name="email">
+                </div>
+                
+                <div class="form-group">
+                    <label for="city">Ciudad *</label>
+                    <input type="text" id="city" name="city" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="quantity">Cantidad *</label>
+                    <select id="quantity" name="quantity" required>
+                        <option value="1">1 envase - $89.900</option>
+                        <option value="2">2 envases - $169.900 (Ahorra $9.900)</option>
+                        <option value="3">3 envases - $239.900 (Ahorra $29.800)</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="cta-button" style="width: 100%; margin-top: 1rem;">
+                    ENVIAR PEDIDO
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Modal Functions
+        function openModal() {
+            document.getElementById('orderModal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('orderModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('orderModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+
+        // Form Submission
+        function handleSubmit(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = {
+                name: document.getElementById('name').value,
+                phone: document.getElementById('phone').value,
+                email: document.getElementById('email').value,
+                city: document.getElementById('city').value,
+                quantity: document.getElementById('quantity').value
+            };
+            
+            // Here you would normally send the data to a server
+            console.log('Pedido recibido:', formData);
+            
+            // Show success message
+            alert(`¡Gracias ${formData.name}!\n\nTu pedido ha sido recibido. Nos pondremos en contacto contigo al número ${formData.phone} para confirmar el envío.\n\nCantidad: ${formData.quantity} envase(s)`);
+            
+            // Close modal and reset form
+            closeModal();
+            document.getElementById('orderForm').reset();
+        }
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll Animation Observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards
+        document.querySelectorAll('.benefit-card, .ingredient-card, .testimonial-card, .step').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease-out';
+            observer.observe(el);
+        });
+
+        // Add scroll effect to header
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.4)';
+            } else {
+                header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.3)';
+            }
+            
+            lastScroll = currentScroll;
+        });
+
+        // Counter animation for price section
+        const animateValue = (obj, start, end, duration) => {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                obj.innerHTML = Math.floor(progress * (end - start) + start);
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        };
+
+        // Add urgency message
+        const urgencyMessages = [
+            "🔥 ¡Quedan solo 15 unidades!",
+            "⚡ ¡Oferta por tiempo limitado!",
+            "✅ ¡Más de 1000 clientes satisfechos!",
+            "🚚 ¡Envío gratis hoy!"
+        ];
+
+        let msgIndex = 0;
+        setInterval(() => {
+            const ctaSection = document.querySelector('.cta-section p');
+            if (ctaSection) {
+                ctaSection.style.opacity = '0';
+                setTimeout(() => {
+                    ctaSection.textContent = urgencyMessages[msgIndex];
+                    ctaSection.style.opacity = '1';
+                    msgIndex = (msgIndex + 1) % urgencyMessages.length;
+                }, 300);
+            }
+        }, 5000);
+    </script>
+</body>
+</html>
